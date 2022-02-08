@@ -32,7 +32,36 @@ Konsoliin kirjoitetaan haluttua toimintoa vastaava numero. Toiminnot ovat:
 4. Opettajien määrä, ketkä ovat antaneet eniten opintopisteitä"
       - Esimerkiksi 2 (1-100)
 6. Lopeta ohjelman suoritus
-     
+
+
+### Tietokannan skeema
+```
+CREATE TABLE Opiskelijat (
+    id INTEGER PRIMARY KEY,
+    nimi TEXT
+);
+
+
+CREATE TABLE Opettajat (
+    id INTEGER PRIMARY KEY,
+    nimi TEXT
+);
+
+CREATE TABLE Kurssit (
+    id INTEGER PRIMARY KEY,
+    nimi TEXT,
+    laajuus INTEGER,
+    opettaja_id INTEGER REFERENCES Opettajat
+);
+
+CREATE TABLE Suoritukset (
+    id INTEGER PRIMARY KEY,
+    opiskelija_id INTEGER REFERENCES Opiskelijat,
+    kurssi_id INTEGER REFERENCES Kurssit,
+    arvosana INTEGER,
+    paivays DATE
+);
+```
 
 
 ### Vaatimukset
